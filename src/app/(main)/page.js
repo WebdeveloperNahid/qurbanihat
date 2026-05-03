@@ -14,7 +14,7 @@ export default function Home() {
           width={1920}
           className="w-full h-auto"
         ></Image>
-        <button  className="absolute -mt-[30%]  ml-[40%] bg-green-400 py-2 px-3 font-bold text-white rounded-2xl border-2 border-yellow-white "><NavLink href={"/all-animals"}>All Animals</NavLink></button>
+        <button  className="absolute -mt-[32%]  ml-[40%] bg-green-400 py-2 px-3 font-bold text-white rounded-2xl border-2 border-yellow-white "><NavLink href={"/all-animals"}>All Animals</NavLink></button>
       </div>
     </div>
   );
