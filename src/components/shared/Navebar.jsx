@@ -1,0 +1,61 @@
+"use client";
+
+import Image from "next/image";
+import logo from "../../../public/qurbaniHat-logo.png";
+
+import NavLink from "./NavLink";
+import { useState } from "react";
+import { HiX } from "react-icons/hi";
+import { MdMenu } from "react-icons/md";
+
+const Navebar = () => {
+  const [isOpen, setIsOpen] = useState();
+  const Links = (
+    <>
+      <li>
+        <NavLink href={"/"}>Home</NavLink>
+      </li>
+      <li>
+        <NavLink href={"/all-animals"}>All Animals</NavLink>
+      </li>
+      <li>
+        <NavLink href={"/profile"}>Profile</NavLink>
+      </li>
+    </>
+  );
+
+  return (
+    <div className="flex items-center justify-between my-2 container mx-auto">
+      <div className="flex items-center gap-3">
+        <div className="md:hidden relative">
+          <button className="text-3xl text-green-600" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <HiX /> : <MdMenu />}
+          </button>
+          {isOpen && (
+            <div className="absolute mt-6 list-none text-green-400 font-bold flex flex-col gap-1 border-none bg-green-200 py-2 w-35 px-3"  >
+              {Links}{" "}
+            </div>
+          )}
+        </div>
+
+        <div className="flex items-center gap-1">
+          <div className="border-3  rounded-[50%] text-green-400">
+            <Image src={logo} alt={logo} width={70} height={70}></Image>
+          </div>
+          <h1 className="text-green-500 font-bold text-[20px]">QurbaniHat</h1>
+        </div>
+      </div>
+
+      <ul className=" hidden lg:flex justify-items-center gap-4 text-green-400 font-semibold ">
+        {Links}
+      </ul>
+
+      <div className="flex gap-2">
+        <button className="btn bg-green-400 text-white ">login</button>
+        <button className="btn bg-blue-400  text-white">register</button>
+      </div>
+    </div>
+  );
+};
+
+export default Navebar;
