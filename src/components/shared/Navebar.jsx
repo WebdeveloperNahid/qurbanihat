@@ -32,7 +32,7 @@ const Navebar = () => {
             {isOpen ? <HiX /> : <MdMenu />}
           </button>
           {isOpen && (
-            <div className="absolute mt-6 list-none text-green-400 font-bold flex flex-col gap-1 border-none bg-green-200 py-2 w-35 px-3"  >
+            <div className="absolute mt-6 list-none text-green-400 font-bold flex flex-col gap-1 border-none bg-green-200 py-2 w-35 px-3 z-20 transition duration-300"  >
               {Links}{" "}
             </div>
           )}
