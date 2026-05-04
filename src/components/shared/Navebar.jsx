@@ -46,7 +46,7 @@ const Navebar = () => {
         </div>
       </div>
 
-      <ul className=" hidden lg:flex justify-items-center gap-4 text-green-400 font-semibold ">
+      <ul className=" hidden md:flex justify-items-center gap-4 text-green-400 font-semibold ">
         {Links}
       </ul>
 

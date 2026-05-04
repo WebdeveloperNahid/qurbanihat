@@ -7,6 +7,11 @@ import { GiWeight } from "react-icons/gi";
 const DeatilsPage = async ({ params }) => {
   const { id } = await params;
   const animal= await getCowDetailsById(id);
+  
+  if(!animal) {
+    return <div className="text-center text-2xl mt-20"> Animal Not Found!</div>
+  }
+
   return (
     <div className="card bg-base-100 shadow-sm container mx-auto lg:w-[80%] xl:w-[70%]">
   <figure>
