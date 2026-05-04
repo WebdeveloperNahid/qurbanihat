@@ -1,3 +1,14 @@
+// fetch for All 
+
+export async function getAllfatch() {
+    const res = await fetch("http://localhost:3000/animals.json", {
+        cache: "no-store"
+    });
+    const data = await res.json();
+    return data;
+}
+
+
 // animal-details
 export async function getCowDetailsById (id) {
     const res = await fetch("http://localhost:3000/animals.json",{ cache: "no-store"} );

@@ -15,7 +15,7 @@ export default function Home() {
           alt="heroImg"
           height={600}
           width={1920}
-          className="w-full h-auto"
+          className="w-full h-auto object-cover"
         ></Image>
         <div className="absolute -mt-17  container text-white  mx-auto">
           <h1 className="animate__animated animate__slideInDown text-5xl md:text-2xl font-extrabold text-center">
