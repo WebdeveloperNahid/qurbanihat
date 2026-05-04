@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const CardAnimals = ({ animal }) => {
@@ -9,8 +10,8 @@ const CardAnimals = ({ animal }) => {
           <Image
             src={animal.image}
             alt="animal.name"
-            width={400}
-            height={300}
+            width={600}
+            height={400}
           ></Image>
         </figure>
         <div className="card-body">
@@ -21,9 +22,11 @@ const CardAnimals = ({ animal }) => {
           <h2 className="font-semibold text-[16px] text-green-400">
             Price: {animal.price} <span className="text-2xl">৳</span>
           </h2>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Details</button>
-          </div>
+          <Link href={`all-animals/${animal.id}`}
+           className="card-actions justify-end">
+            <button className="btn bg-green-400 text-white font-extrabold">Details</button>
+          </Link>
+          
         </div>
       </div>
    
