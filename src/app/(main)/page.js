@@ -24,13 +24,15 @@ export default function Home() {
 
         
         <div className="absolute inset-0 flex flex-col justify-center items-center text-white px-4 gap-4">
-          <h1 className="animate__animated animate__slideInDown text-2xl md:text-4xl lg:text-5xl font-extrabold text-center">
-            কোরবানির হাটে আপনাকে স্বাগতম
+          <h1 className="animate__animated animate__slideInDown text-2xl md:text-4xl lg:text-4xl font-extrabold text-center">
+           
+           আপনার কুরবানির জন্য দেশি ও বিদেশি জাতের <br/> গরু ও ছাগল বাছাই করে কিনুন।
           </h1>
 
           <div className="w-full max-w-xl">
             <Marquee direction="right">
-              আপনার কোরবানির জন্য 🐐 সেরা মানের পশু কিনুন
+               🐐 কুরবানির হাটে আপনাকে আন্তরিক স্বাগতম।
+          
             </Marquee>
           </div>
 
