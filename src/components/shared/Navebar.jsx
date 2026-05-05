@@ -2,13 +2,19 @@
 
 import Image from "next/image";
 import logo from "../../../public/qurbaniHat-logo.png";
+import userAvatar from "../../app/assets/avatar.png";
 
 import NavLink from "./NavLink";
 import { useState } from "react";
 import { HiX } from "react-icons/hi";
 import { MdMenu } from "react-icons/md";
+import { authClient } from "@/app/lib/auth-client";
+import Link from "next/link";
 
 const Navebar = () => {
+  const { data: session, isPending } = authClient.useSession();
+  const user = session?.user;
+
   const [isOpen, setIsOpen] = useState();
   const Links = (
     <>
@@ -54,10 +60,28 @@ const Navebar = () => {
           {Links}
         </ul>
 
-        <div className="flex gap-2">
-          <button className="btn bg-green-400 text-white ">login</button>
-          <button className="btn bg-blue-400  text-white">register</button>
-        </div>
+        { isPending? (<span className="loading loading-spinner loading-md"></span>) : user ? (
+          <div className="flex gap-2">
+            <h2>Hello! {user?.name}</h2>
+            <Image
+              src={user?.image || userAvatar}
+              alt="User avatar"
+              width={60}
+              height={60}
+            ></Image>
+            <button onClick={async ()=> await authClient.signOut()} className="btn bg-blue-400  text-white">Logout</button>
+          </div>
+        ) : (
+          <div>
+            {" "}
+            <Link href="/login">
+              <button className="btn bg-green-400 text-white">Login</button>
+            </Link>
+            <Link href="/register">
+              <button className="btn bg-blue-400 text-white">Register</button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
