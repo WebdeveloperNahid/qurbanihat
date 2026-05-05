@@ -1,3 +1,4 @@
+import BookingForm from "@/components/shared/Booking";
 import { getCowDetailsById } from "../../../lib/fatchData";
 import Image from "next/image";
 import Link from "next/link";
@@ -68,6 +69,7 @@ const DeatilsPage = async ({ params }) => {
           </button>
         </Link>
       </div>
+      <BookingForm></BookingForm>
     </div>
   );
 };
