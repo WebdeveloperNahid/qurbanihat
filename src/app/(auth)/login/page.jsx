@@ -1,5 +1,5 @@
 "use client";
-import { authClient } from "@/app/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -7,10 +7,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-
-
 const LoginPage = () => {
-  const router = useRouter()
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -19,21 +17,20 @@ const LoginPage = () => {
   } = useForm();
 
   const handleLoginFunc = async (data) => {
-    const {email, password} = data;
+    const { email, password } = data;
 
-    const {data:res, error} = await authClient.signIn.email({
+    const { data: res, error } = await authClient.signIn.email({
       email,
       password,
       callbackURL: "/",
     });
-    if(error) {
-      toast.error(error.message || "Login failed!")
+    if (error) {
+      toast.error(error.message || "Login failed!");
       return;
     }
     toast.success("Login successful!");
-    router.push("/")
+    router.push("/");
   };
-
 
   // console.log(watch("email"))
   // by Google login

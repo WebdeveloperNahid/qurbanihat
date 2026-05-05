@@ -8,7 +8,7 @@ import NavLink from "./NavLink";
 import { useState } from "react";
 import { HiX } from "react-icons/hi";
 import { MdMenu } from "react-icons/md";
-import { authClient } from "@/app/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 
 const Navebar = () => {
@@ -60,18 +60,28 @@ const Navebar = () => {
           {Links}
         </ul>
 
-        { isPending? (<span className="loading loading-spinner loading-md"></span>) : user ? (
+        {isPending ? (
+          <span className="loading loading-spinner loading-md"></span>
+        ) : user ? (
           <div className="flex gap-2">
-            <h2 className="font-semibold"> <span className="text-green-500">Hello!_</span> {user?.name}</h2>
+            <h2 className="font-semibold">
+              {" "}
+              <span className="text-green-500">Hello!_</span> {user?.name}
+            </h2>
             <div className=" rounded-full overflow-hidden">
               <Image
-              src={user?.image || userAvatar}
-              alt="User avatar"
-              width={60}
-              height={60}
-            ></Image>
+                src={user?.image || userAvatar}
+                alt="User avatar"
+                width={60}
+                height={60}
+              ></Image>
             </div>
-            <button onClick={async ()=> await authClient.signOut()} className="btn bg-blue-400  text-white">Logout</button>
+            <button
+              onClick={async () => await authClient.signOut()}
+              className="btn bg-blue-400  text-white"
+            >
+              Logout
+            </button>
           </div>
         ) : (
           <div>
