@@ -62,13 +62,15 @@ const Navebar = () => {
 
         { isPending? (<span className="loading loading-spinner loading-md"></span>) : user ? (
           <div className="flex gap-2">
-            <h2>Hello! {user?.name}</h2>
-            <Image
+            <h2 className="font-semibold"> <span className="text-green-500">Hello!_</span> {user?.name}</h2>
+            <div className=" rounded-full overflow-hidden">
+              <Image
               src={user?.image || userAvatar}
               alt="User avatar"
               width={60}
               height={60}
             ></Image>
+            </div>
             <button onClick={async ()=> await authClient.signOut()} className="btn bg-blue-400  text-white">Logout</button>
           </div>
         ) : (
