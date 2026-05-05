@@ -1,7 +1,7 @@
 // fetch for All 
 
 export async function getAllfatch() {
-    const res = await fetch("http://localhost:3000/animals.json", {
+    const res = await fetch("https://qurbanihat-ecru.vercel.app/animals.json", {
         cache: "no-store"
     });
     const data = await res.json();
@@ -11,7 +11,7 @@ export async function getAllfatch() {
 
 // animal-details
 export async function getCowDetailsById (id) {
-    const res = await fetch("http://localhost:3000/animals.json",{ cache: "no-store"} );
+    const res = await fetch("https://qurbanihat-ecru.vercel.app/animals.json",{ cache: "no-store"} );
     const data = await res.json();
     return data.find(animal => animal.id === parseInt(id));
 
@@ -20,7 +20,7 @@ export async function getCowDetailsById (id) {
 // Features
  
 export async function getFeaturedAnimals (id) {
-    const res = await fetch("http://localhost:3000/animals.json",{ cache: "no-store"} );
+    const res = await fetch("https://qurbanihat-ecru.vercel.app/animals.json",{ cache: "no-store"} );
     const data = await res.json();
    const cows = data.filter(animal => animal.type === "Cow").slice(0,2);
    const goats = data.filter(animal => animal.type === "Goat").slice(0,2);
