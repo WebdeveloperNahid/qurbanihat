@@ -6,12 +6,13 @@ const CardAnimals = ({ animal }) => {
   return (
     
       <div className="card bg-base-100  shadow-sm">
-        <figure>
+        <figure className="h-[220px] overflow-hidden">
           <Image
             src={animal.image}
             alt="animal.name"
             width={600}
             height={400}
+            className="w-full h-full object-cover"
           ></Image>
         </figure>
         <div className="card-body">
