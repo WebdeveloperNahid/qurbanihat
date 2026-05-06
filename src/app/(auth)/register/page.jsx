@@ -25,7 +25,7 @@ const RegisterPage = () => {
       email: email,
       password: password,
       image: photo,
-      callbackURL: "/",
+      callbackURL: "/login",
     });
 
     if (error) {
@@ -35,7 +35,7 @@ const RegisterPage = () => {
 
     toast.success("Registration successful! ");
      setTimeout(() => {
-    router.push("/");
+    router.push("/login");
   }, 1500);
   };
 
