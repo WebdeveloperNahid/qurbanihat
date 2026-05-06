@@ -7,7 +7,7 @@ QurbaniHat is a modern livestock booking platform where users can browse and boo
 To make the Qurbani animal buying process সহজ, fast, and accessible online.
 
 ##  Live URL
-https:
+live link : https://qurbanihat-ecru.vercel.app/
 
 ##  Features
 - User authentication
