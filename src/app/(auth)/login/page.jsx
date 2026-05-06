@@ -19,7 +19,7 @@ const LoginPage = () => {
   const handleLoginFunc = async (data) => {
     const { email, password } = data;
 
-    const { data: res, error } = await authClient.signIn.email({
+    const { data:res, error } = await authClient.signIn.email({
       email,
       password,
       callbackURL: "/",

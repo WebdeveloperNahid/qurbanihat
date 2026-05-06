@@ -32,8 +32,9 @@ const RegisterPage = () => {
       toast.error(error.message || "Registration failed!");
       return;
     }
-
-    toast.success("Registration successful! ");
+    await authClient.signOut();
+    
+    toast.success("Registration successful! Please login.");
      setTimeout(() => {
     router.push("/login");
   }, 1500);
