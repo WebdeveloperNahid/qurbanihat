@@ -32,7 +32,7 @@ const Navebar = () => {
 
   return (
     <div className="bg-green-100 ">
-      <div className="flex items-center justify-between my-2 container mx-auto">
+      <div className="w-full px-4 mx-auto flex flex-col items-center gap-3 my-2 sm:container sm:flex-row sm:justify-between sm:px-6 ">
         <div className="flex items-center gap-3">
           <div className="md:hidden relative">
             <button
