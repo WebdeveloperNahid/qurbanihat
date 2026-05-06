@@ -50,7 +50,7 @@ const Navebar = () => {
 
           <div className="flex items-center gap-1">
             <div className="border-3  rounded-[50%] text-green-400">
-              <Image src={logo} alt={logo} width={70} height={70}></Image>
+              <Image src={logo}alt="QurbaniHat Logo" width={70} height={70}></Image>
             </div>
             <h1 className="text-green-500 font-bold text-[20px]">QurbaniHat</h1>
           </div>

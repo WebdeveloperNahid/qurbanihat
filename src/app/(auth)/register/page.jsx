@@ -1,46 +1,61 @@
 "use client";
 import { createAuthClient } from "better-auth/react";
-
 import React from "react";
 import { useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const authClient = createAuthClient({
   baseURL: "http://localhost:3000",
 });
 
 const RegisterPage = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
   const handleLoginFunc = async (data) => {
-    console.log(data);
     const { email, name, photo, password } = data;
-    console.log(name, photo);
 
-    const { data: res, error } = await authClient.signUp.email({
-      name: name, // required
-      email: email, // required
-      password: password, // required
+    const { error } = await authClient.signUp.email({
+      name: name,
+      email: email,
+      password: password,
       image: photo,
       callbackURL: "/",
     });
-    console.log(res, error);
+
+    if (error) {
+      toast.error(error.message || "Registration failed!");
+      return;
+    }
+
+    toast.success("Registration successful! ");
+     setTimeout(() => {
+    router.push("/");
+  }, 1500);
   };
-  // console.log(watch("email"))
-  //By Google login
+
   const GoogleSignIn = async () => {
-    const data = await authClient.signIn.social({
+    const { error } = await authClient.signIn.social({
       provider: "google",
+      callbackURL: "/",
     });
-    // console.log(data);
+
+    if (error) {
+      toast.error(error.message || "Google login failed!");
+      return;
+    }
+
+    router.push("/");
   };
 
   return (
     <div className="container mx-auto min-h-[90vh] flex justify-center items-center bg-slate-100">
+      <Toaster position="top-right" />
       <div className="p-4 rounded-xl bg-white">
         <h2 className="font-bold text-3xl mb-6">Register your account</h2>
 
@@ -54,9 +69,10 @@ const RegisterPage = () => {
               {...register("name", { required: "name field is required" })}
             />
             {errors.name && (
-              <p className="text-red-500"> {errors.name.message}</p>
+              <p className="text-red-500">{errors.name.message}</p>
             )}
           </fieldset>
+
           <fieldset className="fieldset">
             <legend className="fieldset-legend">Photo URL</legend>
             <input
@@ -66,9 +82,10 @@ const RegisterPage = () => {
               {...register("photo", { required: "photo field is required" })}
             />
             {errors.photo && (
-              <p className="text-red-500"> {errors.photo.message}</p>
+              <p className="text-red-500">{errors.photo.message}</p>
             )}
           </fieldset>
+
           <fieldset className="fieldset">
             <legend className="fieldset-legend">Email</legend>
             <input
@@ -78,12 +95,12 @@ const RegisterPage = () => {
               {...register("email", { required: "email field is required" })}
             />
             {errors.email && (
-              <p className="text-red-500"> {errors.email.message}</p>
+              <p className="text-red-500">{errors.email.message}</p>
             )}
           </fieldset>
 
           <fieldset className="fieldset">
-            <legend className="fieldset-legend">password</legend>
+            <legend className="fieldset-legend">Password</legend>
             <input
               type="password"
               className="input"
@@ -93,7 +110,7 @@ const RegisterPage = () => {
               })}
             />
             {errors.password && (
-              <p className="text-red-500"> {errors.password.message}</p>
+              <p className="text-red-500">{errors.password.message}</p>
             )}
           </fieldset>
 
@@ -104,6 +121,7 @@ const RegisterPage = () => {
             <legend className="mx-auto px-2 text-gray-500">or</legend>
           </fieldset>
         </form>
+
         <button
           onClick={GoogleSignIn}
           className="btn w-full bg-white text-black border-[#e5e5e5]"
@@ -117,22 +135,10 @@ const RegisterPage = () => {
           >
             <g>
               <path d="m0 0H512V512H0" fill="#fff"></path>
-              <path
-                fill="#34a853"
-                d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
-              ></path>
-              <path
-                fill="#4285f4"
-                d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
-              ></path>
-              <path
-                fill="#fbbc02"
-                d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
-              ></path>
-              <path
-                fill="#ea4335"
-                d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
-              ></path>
+              <path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path>
+              <path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path>
+              <path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path>
+              <path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path>
             </g>
           </svg>
           Login with Google

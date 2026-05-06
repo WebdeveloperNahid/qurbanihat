@@ -29,7 +29,9 @@ const LoginPage = () => {
       return;
     }
     toast.success("Login successful!");
+    setTimeout(() => {
     router.push("/");
+  }, 1500);
   };
 
   // console.log(watch("email"))
