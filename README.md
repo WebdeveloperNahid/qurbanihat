@@ -1,4 +1,5 @@
 #  QurbaniHat
+<img width="800" height="393" alt="image" src="https://github.com/user-attachments/assets/a07f7e06-7335-4d32-8453-425d67f82496" />
 
 ##  Overview
 QurbaniHat is a modern livestock booking platform where users can browse and book cows and goats for Qurbani with a simple and user-friendly experience.
